@@ -3,4 +3,12 @@
     <string name="app_name">НМедиа!</string>
     <string name="nmedia">НМедиа!</string>
     <string name="titleAuthor">Нетология университет</string>
+    <string name="button_menu">кнопка меню</string>
+    <string name="description_button_share">кнопка репостов</string>
+    <string name="description_button_likes">кнопка лайков</string>
+    <string name="description_button_views">кнопка просмотров</string>
+    <string name="test_views_5">5</string>
+    <string name="test_count_52">52</string>
+    <string name="description_image_conten">изображения контента</string>
+    <string name="description_image_logo">изображение аватара</string>
 </resources>
