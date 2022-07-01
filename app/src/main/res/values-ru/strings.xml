@@ -8,7 +8,9 @@
     <string name="description_button_likes">кнопка лайков</string>
     <string name="description_button_views">кнопка просмотров</string>
     <string name="test_views_5">5</string>
-    <string name="test_count_52">52</string>
+    <string name="test_number_52">52</string>
     <string name="description_image_conten">изображения контента</string>
     <string name="description_image_logo">изображение аватара</string>
+    <string name="test_number_0">0</string>
+    <string name="test_number_999">999</string>
 </resources>
