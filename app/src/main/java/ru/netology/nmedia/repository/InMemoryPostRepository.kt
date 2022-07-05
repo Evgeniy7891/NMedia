@@ -15,13 +15,14 @@ class InMemoryPostRepository : PostRepository { // хранить данные �
     private val data = MutableLiveData(post) // переменная для хранения подписки
     override fun get(): LiveData<Post> = data // возвращает подписку на пост
     override fun like() {
-       post.liked = !post.liked
+        post.liked = !post.liked
         post.likeCounter = if (post.liked) post.likeCounter + 1 else post.likeCounter - 1
-       // post = post.copy(
-       //     liked = !post.liked,
-       //     likeCounter = if (post.liked) post.likeCounter - 1 else post.likeCounter + 1 )
+        // post = post.copy(
+        //     liked = !post.liked,
+        //     likeCounter = if (post.liked) post.likeCounter - 1 else post.likeCounter + 1 )
         data.value = post // передать обновленные данные
     }
+
     override fun share() {
         post.shareCounter++
         data.value = post
