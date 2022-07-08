@@ -6,7 +6,7 @@ data class Post(
     val logoAvatar: String,
     val time: String,
     val text: String,
-    var likeCounter: Long = 999, // счетчик лайков
-    var shareCounter: Long = 999_998, // счетчик репостов
-    var liked: Boolean = false
+    val likeCounter: Long = 999, // счетчик лайков
+    val shareCounter: Long = 999_998, // счетчик репостов
+    val liked: Boolean = false
 )
