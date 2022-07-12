@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import androidx.activity.viewModels
+import ru.netology.nmedia.adapter.PostAdapter
 import ru.netology.nmedia.databinding.ActivityMainBinding
+import ru.netology.nmedia.databinding.CardPostBinding
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.viewmodel.PostViewModel
 
@@ -17,26 +19,17 @@ class MainActivity : AppCompatActivity() {
         bindingClass = ActivityMainBinding.inflate(layoutInflater)
         setContentView(bindingClass.root)
         val viewModel by viewModels<PostViewModel>() // получить допуск к вьюМодели
-        viewModel.data.observe(this) { post ->
-            with(bindingClass) {
-                // организуем подписку на изминения типа ВьюМодель
-                titleAuthor.text = post.author
-                timePosts.text = post.time
-                textContent.text = post.text
-                imageLikes.setImageResource(if (post.liked) R.drawable.ic_baseline_full_favorite_24 else R.drawable.ic_baseline_favorite_border_24)
-                textCountLikes.text =
-                    formatCount(post.likeCounter) // конвертирует через метод формат
-                textCountShare.text =
-                    formatCount(post.shareCounter) // конвертирует черезё метод формат
-            }
-            bindingClass.imageShare.setOnClickListener() {
-                viewModel.share() // реализация счетчика репостов
-            }
-            bindingClass.imageLikes.setOnClickListener { // реализация лайка
-                viewModel.like()
-            }
+        val adapter = PostAdapter (
+            onLikeListener = {viewModel.likeById(it.id)},
+            onShareListener = {viewModel.shareById(it.id)}
+
+                )
+        bindingClass.list.adapter = adapter
+        viewModel.data.observe(this) { posts ->
+            adapter.submitList(posts)
         }
     }
 }
+
 
 

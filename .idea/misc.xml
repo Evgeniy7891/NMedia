@@ -4,9 +4,14 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/la-uf/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.113" />
+        <entry key="..\:/Users/la-uf/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_baseline_full_favorite_24.xml" value="0.1055" />
+        <entry key="..\:/Users/la-uf/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_baseline_remove_red_eye_24.xml" value="0.1055" />
+        <entry key="..\:/Users/la-uf/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_baseline_share_24.xml" value="0.1055" />
         <entry key="..\:/Users/la-uf/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1785" />
         <entry key="..\:/Users/la-uf/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1785" />
-        <entry key="..\:/Users/la-uf/AndroidStudioProjects/NMedia/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/la-uf/AndroidStudioProjects/NMedia/app/src/main/res/drawable/like_svgrepo_com.xml" value="0.1055" />
+        <entry key="..\:/Users/la-uf/AndroidStudioProjects/NMedia/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/la-uf/AndroidStudioProjects/NMedia/app/src/main/res/layout/card_post.xml" value="0.22" />
       </map>
     </option>
   </component>
@@ -15,5 +20,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.14666666666666667" />
+      </ProjectState>
+    </option>
   </component>
 </project>
