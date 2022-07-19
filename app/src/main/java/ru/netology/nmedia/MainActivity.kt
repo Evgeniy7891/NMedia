@@ -2,6 +2,7 @@ package ru.netology.nmedia
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity() {
                     viewModel.edit(post)
                     bindingClass.group.visibility = View.VISIBLE
                     bindingClass.exampleTest.text = post.text
+                    Log.d("Tag", "Activity - edit")
                 }
 
                 override fun onRemove(post: Post) {
@@ -43,12 +45,22 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         )
+        bindingClass.list.adapter = adapter
+        viewModel.data.observe(this) { posts ->
+            val newPost = adapter.itemCount < posts.size
+            adapter.submitList(posts) {
+                if (newPost) bindingClass.list.smoothScrollToPosition(0)
+                Log.d("Tag", "Smooth")
+            }
+        }
         viewModel.edited.observe(this) { edited ->
             if (edited.id == 0L) {
+                Log.d("Tag", "Edited == 0")
                 return@observe
             }
-            bindingClass.content.setText(edited.text)
             bindingClass.content.requestFocus()
+            bindingClass.content.setText(edited.text)
+            Log.d("Tag", "edited observe")
         }
         bindingClass.save.setOnClickListener {
             if (bindingClass.content.text.isNullOrBlank()) {
@@ -59,20 +71,19 @@ class MainActivity : AppCompatActivity() {
             val text = bindingClass.content.text.toString()
             viewModel.editContent(text)
             viewModel.save()
-            bindingClass.group.visibility = View.INVISIBLE
             bindingClass.content.clearFocus()
             AndroidUtils.hideKeyboard(bindingClass.content)
             bindingClass.content.setText("")
+            bindingClass.group.visibility = View.GONE
+            Log.d("Tag", "Click Save")
         }
         bindingClass.imageCloseEditText.setOnClickListener {
-            bindingClass.group.visibility = View.INVISIBLE
-            bindingClass.content.clearFocus()
             AndroidUtils.hideKeyboard(bindingClass.content)
             bindingClass.content.setText("")
-        }
-        bindingClass.list.adapter = adapter
-        viewModel.data.observe(this) { posts ->
-            adapter.submitList(posts)
+            bindingClass.group.visibility = View.GONE
+            bindingClass.content.clearFocus()
+            viewModel.clear()
+            Log.d("Tag", "CLick close Edit")
         }
     }
 }

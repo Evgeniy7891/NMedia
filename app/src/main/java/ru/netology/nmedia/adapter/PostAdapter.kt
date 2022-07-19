@@ -1,5 +1,6 @@
 package ru.netology.nmedia.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.PopupMenu
@@ -62,10 +63,11 @@ class PostAdapter(
                                 }
                                 R.id.edit -> {
                                     listener.edit(post)
+                                    Log.d("Tag", "PA click edit")
                                     return@setOnMenuItemClickListener true
                                 }
+                                else -> false
                             }
-                            false
                         }
                         show()
                     }
@@ -84,4 +86,5 @@ class PostDiffCallback : DiffUtil.ItemCallback<Post>() {
         return oldItem == newItem
     }
 
+    override fun getChangePayload(oldItem: Post, newItem: Post): Any = Unit
 }

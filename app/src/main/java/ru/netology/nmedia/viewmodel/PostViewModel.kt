@@ -1,5 +1,6 @@
 package ru.netology.nmedia.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import ru.netology.nmedia.dto.Post
@@ -35,6 +36,7 @@ class PostViewModel : ViewModel() {
             repository.save(it)
         }
         edited.value = empty
+        Log.d("Tag", "PVModel save")
     }
 
     fun editContent(content: String) {
@@ -45,9 +47,16 @@ class PostViewModel : ViewModel() {
             }
             edited.value = it.copy(text = trimmed)
         }
+        Log.d("Tag", "PVM editContent")
     }
 
     fun edit(post: Post) {
         edited.value = post
+        Log.d("Tag", "PVM edit")
+    }
+
+    fun clear() {
+        edited.value = empty
+        Log.d("Tag", "PVM clear")
     }
 }
