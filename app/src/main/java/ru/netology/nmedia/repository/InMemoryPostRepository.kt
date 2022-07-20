@@ -1,10 +1,12 @@
 package ru.netology.nmedia.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import ru.netology.nmedia.dto.Post
 
 class InMemoryPostRepository : PostRepository { // реализует интерфейс и хранить данные в памяти
+    private var nextId = 1L
     private var posts = listOf(
         Post(
             id = 1,
@@ -43,7 +45,7 @@ class InMemoryPostRepository : PostRepository { // реализует интер
             likeCounter = 14,
             shareCounter = 145,
             liked = true
-        )
+        ),
     )
     private val data = MutableLiveData(posts) // переменная для хранения подписки
     override fun getAll(): LiveData<List<Post>> = data // возвращает подписку на пост
@@ -82,4 +84,30 @@ class InMemoryPostRepository : PostRepository { // реализует интер
         }
         data.value = posts
     }
+
+    override fun removeById(id: Long) {
+        posts = posts.filterNot { it.id == id }// фильтруем посты
+        data.value = posts
+
+    }
+
+    override fun save(post: Post) {
+        data.value = if (post.id == 0L)  {
+            Log.d("TAG", "IMPR save newPostsave")
+            listOf(
+                post.copy( // создаем список на основе который уже есть
+                    id = posts.firstOrNull()?.id ?: 1L, // добираемся до первого элемента
+                    author = "Нетология",
+                    time = "2022"
+                )
+            ) + posts
+        } else {
+            Log.d("TAG", "IMPR editSave")
+            posts.map {
+                if (it.id == post.id) it.copy(text = post.text) else it
+            }
+        }
+
+    }
 }
+
