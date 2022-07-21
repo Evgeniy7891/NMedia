@@ -7,7 +7,7 @@
     <string name="description_button_likes">description_button_likes</string>
     <string name="description_button_views">description_button_views</string>
     <string name="test_views_5">5</string>
-    <string name="test_number_0">0</string>
+    <string name="test_number">12</string>
     <string name="description_image_conten">description_image_conten</string>
     <string name="description_image_logo">description_image_logo</string>
     <string name="test_number_999">999</string>
@@ -17,4 +17,7 @@
     <string name="remove">Remove</string>
     <string name="edit">Edit</string>
     <string name="edit_text">Edit text</string>
+    <string name="like">Like</string>
+    <string name="share">Share</string>
+    <string name="test_number_0">0</string>
 </resources>
