@@ -43,13 +43,9 @@ class PostAdapter(
                 titleAuthor.text = post.author
                 timePosts.text = post.time
                 textContent.text = post.text
-                textCountLikes.text = formatCount(post.likeCounter)
-                textCountShare.text = formatCount(post.shareCounter)
-                if (post.liked) {
-                    imageLikes.setImageResource(R.drawable.ic_baseline_full_favorite_24)
-                } else {
-                    imageLikes.setImageResource(R.drawable.ic_baseline_favorite_border_24)
-                }
+                imageShare.text = formatCount(post.shareCounter)
+                imageLikes.isChecked = post.liked
+                imageLikes.text = formatCount(post.likeCounter)
                 imageLikes.setOnClickListener { listener.like(post) }
                 imageShare.setOnClickListener { listener.onShare(post) }
                 buttonMenu.setOnClickListener {

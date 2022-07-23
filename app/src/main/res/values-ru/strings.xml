@@ -18,4 +18,7 @@
     <string name="post_text">Текст поста</string>
     <string name="edit">Редактировать</string>
     <string name="edit_text">Редактировать пост</string>
+    <string name="like">Нравиться</string>
+    <string name="share">Репост</string>
+    <string name="test_number">12</string>
 </resources>
